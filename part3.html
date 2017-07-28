@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML &amp; CSS Assignment</title>
+    <meta name="description" content="HTML &amp; CSS Assignment 3 - Part 3">
+    <meta name="author" content="Guido Cecilio">
+    <style>
+      #rightSide {
+        left: 500px; 
+        border-left: 1px solid black;
+      }
+      div {
+        position: absolute;
+        width:500px; 
+        height:500px 
+      }
+      img {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body onload="generateFaces()">
+    <h1>Maching Game</h1>
+    <p>Click on the extra smiling face on the left.</p>
+    <div id="leftSide"></div>
+    <div id="rightSide"></div>
+  </body>
+  <script type="text/javascript">
+    var 
+      numberOfFaces = 5,
+      theLeftSide = document.getElementById('leftSide'),
+      theRightSide = document.getElementById('rightSide');
+
+
+    function generateFaces() {
+      var i, img, leftSideImages;
+      for (i = 0; i < numberOfFaces; i++) {
+        img = document.createElement('IMG');
+        img.src = 'http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png';
+        img.style.top = Math.floor(Math.random()*400).toString() + 'px';
+        img.style.left = Math.floor(Math.random()*400).toString() + 'px';
+        theLeftSide.appendChild(img);
+      }
+      leftSideImages = theLeftSide.cloneNode(true);
+      leftSideImages.removeChild(leftSideImages.lastChild);
+      theRightSide.appendChild(leftSideImages);
+    }
+  </script>
+</html>
